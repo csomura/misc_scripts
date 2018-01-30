@@ -1,0 +1,67 @@
+find files with filename
+find .  -name "*string*" -print
+
+find files containing string
+grep -rnw '/path/to/somewhere/' -e "pattern"
+*******************************************
+fun with xargs
+
+zip everything:
+ls | xargs -n 2 -P 5 gzip
+find . -type f -name '*.wav' | xargs -n 2 -P 5 gzip
+
+figure out what command is actualy being sent:
+ls | xargs -n 1 echo gzip
+
+-n = number of things per thread
+-P = number of threads
+*******************************************
+view files by size:
+du | sort -g
+*******************************************
+diff file1 file2
+	< = from file 1
+	> = from file 2
+diff -rq directory1 directory2
+	reprts different files within directory
+*******************************************
+time command > file.txt
+	time goes to STDOUT
+	command goes to file.txt
+(time command) 2> file.txt
+	command goes to STDOUT
+	time goes to file.txt
+(time command > file1.txt) 2> file2.txt 
+	time goes to file2.txt
+	command goes to file1.txt
+*******************************************
+"> file" means redirect to new file
+">> file" means redirect and append to file
+*******************************************
+head -100 file > out 
+	out now contains the first 100 lines of file
+*******************************************
+option + arrow keys -> navigate bash faster
+option + [d] -> delete to end of word. usually hold option, then [left][d][left][d] etc
+*******************************************
+wget --passive -ftp
+*******************************************
+chmod 755 filename
+chmod -R 755 directory
+ls -la 
+*******************************************
+filter:
+grep $"word1\|word2\|word3\|" filename
+	 ^ for c style strings, use -P for perl style string (useful for some stuff)
+*******************************************
+find/replace:
+sed -i -e "s/findstring/replacestring/g' filename
+*******************************************
+filter by column:
+awk '($15 > 100)' infile > outfile
+only entries with column 15 over 100 will be in outfile
+
+*******************************************
+count substrings in file:
+grep -c 'substring' file
+*******************************************

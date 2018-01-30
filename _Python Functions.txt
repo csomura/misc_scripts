@@ -1,0 +1,162 @@
+ kernprof -l -v /scripts/smart_assembly_v3.py
+ or just ppython myscript.py with that alias you put 
+ decorate with @profile
+note: you can @profile a bunch of different functions at once
+************************************************
+python -m cProfile myscript.py
+************************************************
+
+os.system("Text you want to put into command line")
+
+************************************************
+#do command line stuff
+from optparse import OptionParser, OptionGroup
+parser = OptionParser()
+
+parser.add_option("-M", "--mutationfile", dest="M", type = "str", default='hi', help="stuff")
+
+#add another group for the optional commands
+group = OptionGroup(parser,"Cosmetic")
+group.add_option("-E", "--expectedFrequency", dest="E", type = "float", default= .0078125, help="stuff")
+parser.add_option_group(group)
+
+
+(opt, args) = parser.parse_args()
+
+#arguments now stored in opt.M, opt.E, etc
+
+************************************************
+
+#open a file for reading
+currentfile = open(final_filename, "r")
+#read all lines
+lines = currentfile.readlines()
+#split all lines
+for line in lines:
+#		extract data from a column
+		f = line.split(" ")[3]
+		
+************************************************
+
+#open a file for writing
+
+f = open(filename, "w"
+f.write(string)
+f.close()
+************************************************
+
+#append to file
+with open("test.txt", "a") as myfile:
+    myfile.write("appended text")
+
+#or
+
+f=open(filename,"a")
+f.write("string")
+f.close()
+		
+************************************************
+
+#////how to print a status bar
+for i in range (int(opt.evenmoredest)):
+	print  '\r' , i,
+	sys.stdout.flush()
+	#time.sleep(1)
+#////
+
+
+************************************************
+
+#/// example time report
+
+import sys, time, datetime
+
+
+	
+def process():
+	time.sleep(.1)
+	
+def report_time(time_start, current, max):
+	fraction = float(current)/max
+	fraction_remaining = 1 - fraction
+	time_since_start = time.time()-time_start
+	if fraction == 0:
+		time_to_finish = 0
+	else:
+		time_to_finish = time_since_start*fraction_remaining/fraction
+	print '\r', "Processing " +str(current) + " out of " + str(max) + ".  Time remaining: " + str(datetime.timedelta(seconds=time_to_finish)) ,
+	sys.stdout.flush()
+	
+start_time = time.time() 	
+max_cycles = 100
+
+for i in range(max_cycles):
+	report_time(start_time, i, max_cycles)
+	process()
+	
+************************************************
+
+#object
+class thing:
+	def __init__(self,variables):
+		self.stuff = variables
+		
+	def do_activity(self, var):
+		print(var)
+		
+************************************************
+#get absolute path from relative path
+import os		
+coding_seq_file=os.path.abspath(opt.c)
+************************************************
+#debugger
+python -m pdb myscript.py
+
+(Pdb) p var
+>(prints var)
+
+(Pdb) tbreak [line]
+>executes UP TO BUT NOT INCLUDEING the line
+
+or just use python -i myscript.py 
+************************************************
+#function with different arguments
+def f(*args, **kwargs):
+   print 'args: ', args, ' kwargs: ', kwargs
+
+>>> f('a')
+args:  ('a',)  kwargs:  {}
+>>> f(ar='a')
+args:  ()  kwargs:  {'ar': 'a'}
+>>> f(1,2,param=3)
+args:  (1, 2)  kwargs:  {'param': 3}
+************************************************
+# c-like print statements
+print("Total score for %s is %s  " % (name, score))
+
+************************************************
+#print with 1,000s separator
+print "{:,}".format(value)
+************************************************
+#debug functions with interactive mode
+
+import code
+
+def add_two(x):
+	
+	intermediate = x+1
+	final = intermediate+1
+	code.interact(local=locals())
+	return final
+	
+a = add_two(2)
+
+#dont run with -i
+#will auto go into interactive mode at the code.interact call
+#>>>final
+#4
+#>>>intermediate
+#3
+************************************************
+
+
